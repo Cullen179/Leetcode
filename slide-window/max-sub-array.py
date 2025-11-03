@@ -13,16 +13,15 @@
 
 class Solution:
     def findMaxAverage(self, nums: list[int], k: int) -> float:
-        if len(nums) < k: return 0
-        a = k
-        largest = 0
-        while (a < len(nums) - 1):
-            total = nums[a - k + 1]
-            for n in range(0, k - 1):
-                total += nums[a - n]
-            if (total / k > largest): largest = total/k
-            a += 1
+        total = sum(nums[:k])
+        maxT = total
+        s = k
+        while (s <= len(nums) - 1):
+            total = total - nums[s - k] + nums[s] 
+            if (maxT < total): maxT = total
+            s += 1
 
-        return largest
+        return maxT /k 
         
 print(Solution().findMaxAverage([1,12,-5,-6,50,3], 4))
+print(Solution().findMaxAverage([1], 1))

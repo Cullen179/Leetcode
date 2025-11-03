@@ -21,18 +21,20 @@ class Solution:
             else:
                 map[s[r]] += 1
 
-            if r - map[maxFre] + 1 > k:
-                map[s[r]] -= 1
+            if r - map[maxFre] - l + 1 > k:
+                map[s[l]] -= 1
                 l += 1 
 
 
-            if s[r] != maxFre and map[s[r]] > map[maxFre]:
+            if s[r] != maxFre and map[s[r]] >= map[maxFre]:
                 maxFre = s[r]
                 
             if longest < r - l + 1: longest = r - l + 1
 
         return longest
-print(Solution().characterReplacement('aababba', 2))
-    
+print(Solution().characterReplacement('DPDPFP', 2))
+
+# r - map[maxFre] + 1 > k:
+
 
                 
